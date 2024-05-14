@@ -116,7 +116,26 @@ class Battleship {
 
     InitializeMyFleet() {
         this.myFleet = gameController.InitializeShips();
-
+        console.log();
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("8 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("7 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("6 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("5 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("4 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("3 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("2 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("1 |   |   |   |   |   |   |   |   |");
+        console.log("  +---+---+---+---+---+---+---+---+");
+        console.log("    A   B   C   D   E   F   G   H");
+        console.log();
         console.log("Please position your fleet (Game board size is from A to H and 1 to 8) :");
 
         this.myFleet.forEach(function (ship) {
