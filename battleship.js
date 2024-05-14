@@ -113,8 +113,6 @@ class Battleship {
             console.log(`The position ${input} is not valid, try again.`);
         }
 
-        console.log("good")
-
         if (this.CheckPositionIsValid(letter, number)) {
             return new position(letter, number);
         } else {
