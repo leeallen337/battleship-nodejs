@@ -210,6 +210,10 @@ class Battleship {
     var result = new position(letter, number);
 
     if (gameController.computerPositions.indexOf(result.toString()) !== -1) {
+        if (process.env.DEBUG === 'true') {
+            console.log(cliColor.yellowBright(`Computer has guessed position ${result} which has already been guessed. Computer is guessing again...`))
+        }
+
         return this.GetRandomPosition();
     }
 
