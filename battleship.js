@@ -86,16 +86,40 @@ class Battleship {
 
   StartGame() {
     console.clear();
-    console.log("                  __");
-    console.log("                 /  \\");
-    console.log("           .-.  |    |");
-    console.log("   *    _.-'  \\  \\__/");
-    console.log("    \\.-'       \\");
-    console.log("   /          _/");
-    console.log("  |      _  /");
-    console.log("  |     /_\\'");
-    console.log("   \\    \\_/");
-    console.log('    """"');
+    console.log("                                         ,:");
+    console.log("                                       ,' |");
+    console.log("                                      /   :");
+    console.log("                                   --'   /");
+    console.log("                                   \\/ /:/");
+    console.log("                                   / ://_\\");
+    console.log("                                __/   /");
+    console.log("                                )'-. /");
+    console.log("                                ./  :\\");
+    console.log("                                 /.' '");
+    console.log("                               '/'");
+    console.log("                               +");
+    console.log("                              '");
+    console.log("                            `.");
+    console.log("                        .-'-");
+    console.log("                       (    |");
+    console.log("                    . .-'  '.");
+    console.log("                   ( (.   )8:");
+    console.log("               .'    / (_  )");
+    console.log("                _. :(.   )8P  `");
+    console.log("            .  (  `-' (  `.   .");
+    console.log("            .  :  (   .a8a)");
+    console.log("           /_`( 'a `a. )''");
+    console.log("         (  (/  .  ' )=='");
+    console.log("        (   (    )  .8'   +");
+    console.log("         (`'8a.( _(   (");
+    console.log("       ..-. `8P    ) `  )  +");
+    console.log("     -'   (      -ab:  )");
+    console.log("    '    _  `    (8P'Ya");
+    console.log("  _(    (    )b  -`.  ) +");
+    console.log(" ( 8)  ( _.aP' _a   \\( \\   *");
+    console.log("+  )/    (8P   (88    )  )");
+    console.log("    (a:f   '     `'`");
+    console.log("'''");
 
     do {
       console.log("--------------------- Your Turn ------------------------");
