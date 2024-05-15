@@ -355,8 +355,7 @@ class Battleship {
           gameController.populateShipPositions(ship, parsedPosition, direction);
           break;
         } else {
-          console.log("No, try again.");
-          validShipPlacement = false;
+          console.log("No a valid placement, try again.");
         }
       } while (validShipPlacement);
     });

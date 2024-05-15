@@ -36,8 +36,6 @@ class GameController {
   static populateShipPositions(ship, position, direction) {
     const shipSize = ship.size;
 
-    console.log(position);
-
     let column = position.column.value;
     let row = position.row;
 
@@ -51,10 +49,15 @@ class GameController {
       } else if (direction === 'd') {
         row++
       }
-      ship.addPosition(new Position(column, row));
+      ship.addPosition(new Position(letters.get(column), row));
     };
 
-    console.log(ship);
+    let shipPosition = [];
+    ship.positions.forEach(function (position) {
+      shipPosition.push(position.toString());
+    })
+
+    console.log(`${ship.name} positions are: ${shipPosition}`);
   }
 
   static CheckIsHit(ships, shot, isMe) {
