@@ -1,4 +1,6 @@
 const Battleship = require("../battleship.js");
+const Position = require("./position.js");
+const letters = require("./letters.js");
 
 class GameController {
   static userPositions = [];
@@ -29,6 +31,30 @@ class GameController {
 
   static addComputerPosition(shot) {
     this.computerPositions.push(shot.toString());
+  }
+
+  static populateShipPositions(ship, position, direction) {
+    const shipSize = ship.size;
+
+    console.log(position);
+
+    let column = position.column.value;
+    let row = position.row;
+
+    for (var i = 0; i < shipSize; i++) {
+      if (direction === 'w') {
+        column--;
+      } else if (direction === 'a') {
+        row--;
+      } else if (direction === 's') {
+        column++;
+      } else if (direction === 'd') {
+        row++
+      }
+      ship.addPosition(new Position(column, row));
+    };
+
+    console.log(ship);
   }
 
   static CheckIsHit(ships, shot, isMe) {

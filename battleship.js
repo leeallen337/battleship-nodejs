@@ -336,31 +336,28 @@ class Battleship {
     this.myFleet.forEach(function (ship) {
       console.log();
       console.log(
-        `Please enter the positions for the ${ship.name} (size: ${ship.size})`
+        `Please enter the position for the ${ship.name} (size: ${ship.size})`
       );
 
-      for (var i = 1; i < ship.size + 1; i++) {
-        console.log(`Enter position ${i} of ${ship.size} (i.e A3):`);
+      let position = readline.question();
+      let validShipPlacement = true;
+      do {
+        console.log(
+          `Please enter the direction for the ${ship.name} (size: ${ship.size}); W A S D`
+        );
 
-        const position = readline.question();
+        let direction = readline.question();
+        const validDirections = ['w', 'a', 's', 'd'];
 
-        let validPosition = Battleship.ParsePosition(position);
-        if (validPosition) {
-          telemetryWorker.postMessage({
-            eventName: "Player_PlaceShipPosition",
-            properties: {
-              Position: position,
-              Ship: ship.name,
-              PositionInShip: i,
-            },
-          });
-
-          ship.addPosition(validPosition);
+        if (validDirections.includes(direction.toLowerCase())) {
+          const parsedPosition = Battleship.ParsePosition(position);
+          gameController.populateShipPositions(ship, parsedPosition, direction);
+          break;
         } else {
-          // redo this iteration;
-          i = i - 1;
+          console.log("No, try again.");
+          validShipPlacement = false;
         }
-      }
+      } while (validShipPlacement);
     });
   }
 
