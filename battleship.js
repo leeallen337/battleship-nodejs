@@ -343,8 +343,9 @@ class Battleship {
       let validShipPlacement = true;
       do {
         console.log(
-          `Please enter the direction for the ${ship.name} (size: ${ship.size}); W A S D`
+          `Please enter the direction for the ${ship.name} (size: ${ship.size}).`
         );
+        console.log("W = up, A = left, S = down, D = right");
 
         let direction = readline.question();
         const validDirections = ['w', 'a', 's', 'd'];
