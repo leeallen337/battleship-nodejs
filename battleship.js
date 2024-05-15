@@ -21,17 +21,64 @@ class Battleship {
     console.log(cliColor.xterm(8)("                                     |__"));
     console.log(cliColor.xterm(8)("                                     |\\/"));
     console.log(cliColor.xterm(8)("                                     ---"));
-    console.log(cliColor.xterm(8)("                                     / | ["));
-    console.log(cliColor.xterm(8)("                              !      | |||"));
-    console.log(cliColor.xterm(8)("                            _/|     _/|-++'"));
-    console.log(cliColor.xterm(8)("                        +  +--|    |--|--|_ |-"));
-    console.log(cliColor.xterm(8)("                     { /|__|  |/\\__|  |--- |||__/"));
-    console.log(cliColor.xterm(8)("                    +---------------___[}-_===_.'____                 /\\"));
-    console.log(cliColor.xterm(8)("                ____`-' ||___-{]_| _[}-  |     |_[___\\==--            \\/   _"));
-    console.log(cliColor.xterm(8)(" __..._____--==/___]_|__|_____________________________[___\\==--____,------' .7"));
-    console.log(cliColor.xterm(8)("|                        Welcome to Battleship                         BB-61/"));
-    console.log(cliColor.xterm(8)(" \\_________________________________________________________________________|"));
+    console.log(
+      cliColor.xterm(8)("                                     / | [")
+    );
+    console.log(
+      cliColor.xterm(8)("                              !      | |||")
+    );
+    console.log(
+      cliColor.xterm(8)("                            _/|     _/|-++'")
+    );
+    console.log(
+      cliColor.xterm(8)("                        +  +--|    |--|--|_ |-")
+    );
+    console.log(
+      cliColor.xterm(8)("                     { /|__|  |/\\__|  |--- |||__/")
+    );
+    console.log(
+      cliColor.xterm(8)(
+        "                    +---------------___[}-_===_.'____                 /\\"
+      )
+    );
+    console.log(
+      cliColor.xterm(8)(
+        "                ____`-' ||___-{]_| _[}-  |     |_[___\\==--            \\/   _"
+      )
+    );
+    console.log(
+      cliColor.xterm(8)(
+        " __..._____--==/___]_|__|_____________________________[___\\==--____,------' .7"
+      )
+    );
+    console.log(
+      cliColor.xterm(8)(
+        "|                        Welcome to Battleship                         BB-61/"
+      )
+    );
+    console.log(
+      cliColor.xterm(8)(
+        " \\_________________________________________________________________________|"
+      )
+    );
     console.log();
+    if (process.env.DEBUG === "true") {
+      console.log(
+        cliColor.yellow("///////////////////////////////////////////////")
+      );
+
+      console.log(
+        cliColor.yellow("//////////// Running in Debug mode ////////////")
+      );
+
+      console.log(
+        cliColor.yellow("///////////////////////////////////////////////\n")
+      );
+
+      console.log(
+        cliColor.yellow("Exit and run `npm run dev` to run in prod mode\n")
+      );
+    }
 
     this.InitializeGame();
     this.StartGame();
@@ -54,13 +101,17 @@ class Battleship {
       console.log("--------------------- Your Turn ------------------------");
       console.log(
         gameController.getUserGuessedPositions().length > 0
-          ? `You have guessed ${gameController.getUserGuessedPositions().toString()}`
+          ? `You have guessed ${gameController
+              .getUserGuessedPositions()
+              .toString()}`
           : ""
       );
 
       var sunkenShips = gameController.GetSunkenShips(this.enemyFleet);
       if (sunkenShips.length) {
-        sunkenShips.forEach(ship => console.log(ship.color('You sunk: ', ship.name)));
+        sunkenShips.forEach((ship) =>
+          console.log(ship.color("You sunk: ", ship.name))
+        );
       }
 
       console.log();
@@ -111,7 +162,11 @@ class Battleship {
       );
 
       var computerGuesses = gameController.computerPositions;
-      console.log(computerGuesses.length > 0 ? `Computer has guessed ${computerGuesses.sort()}` : '');
+      console.log(
+        computerGuesses.length > 0
+          ? `Computer has guessed ${computerGuesses.sort()}`
+          : ""
+      );
 
       var computerPos = this.GetRandomPosition();
       var isHit = gameController.CheckIsHit(this.myFleet, computerPos, false);
@@ -144,12 +199,14 @@ class Battleship {
       var amIDead = gameController.CheckIsFleetSunk(this.myFleet);
       var isComputerDead = gameController.CheckIsFleetSunk(this.enemyFleet);
 
-      if (amIDead){
-        console.log("  _____                         ____");                 
-        console.log(" / ____|                       / __ \\");                
-        console.log("| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __"); 
-        console.log("| | |_ |/ _` | '_ ` _ \\ / _ \\ | |  | \\ \\ / / _ \\ '__|");
-        console.log("| |__| | (_| | | | | | |  __/ | |__| |\\ V /  __/ |");   
+      if (amIDead) {
+        console.log("  _____                         ____");
+        console.log(" / ____|                       / __ \\");
+        console.log("| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __");
+        console.log(
+          "| | |_ |/ _` | '_ ` _ \\ / _ \\ | |  | \\ \\ / / _ \\ '__|"
+        );
+        console.log("| |__| | (_| | | | | | |  __/ | |__| |\\ V /  __/ |");
         console.log(" \\_____|\\__,_|_| |_| |_|\\___|  \\____/  \\_/ \\___|_|");
       }
       if (isComputerDead) {
@@ -158,19 +215,35 @@ class Battleship {
         console.log("                      _  |____________|  _");
         console.log("               _=====| | |            | | |==== _");
         console.log("         =====| |.---------------------------. | |====");
-        console.log("<--------------------'   .  .  .  .  .  .  .  .   '--------------/");
-        console.log(" \\                                                             /");
-        console.log("  \\_______________________________________________WWS_________/");
-        console.log("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
-        console.log("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
-        console.log("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww ");
-        console.log("__          ___");                       
-        console.log("\\ \\        / (_)");                      
-        console.log(" \\ \\  /\\  / / _ _ __  _ __   ___ _ __"); 
-        console.log("  \\ \\/  \\/ / | | '_ \\| '_ \\ / _ \\ '__|         You've Sunk all");
-        console.log("   \\  /\\  /  | | | | | | | |  __/ |              Enemy Ships!");
-        console.log("    \\/  \\/   |_|_| |_|_| |_|\\___|_|");                   
-    }
+        console.log(
+          "<--------------------'   .  .  .  .  .  .  .  .   '--------------/"
+        );
+        console.log(
+          " \\                                                             /"
+        );
+        console.log(
+          "  \\_______________________________________________WWS_________/"
+        );
+        console.log(
+          "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+        );
+        console.log(
+          "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+        );
+        console.log(
+          "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww "
+        );
+        console.log("__          ___");
+        console.log("\\ \\        / (_)");
+        console.log(" \\ \\  /\\  / / _ _ __  _ __   ___ _ __");
+        console.log(
+          "  \\ \\/  \\/ / | | '_ \\| '_ \\ / _ \\ '__|         You've Sunk all"
+        );
+        console.log(
+          "   \\  /\\  /  | | | | | | | |  __/ |              Enemy Ships!"
+        );
+        console.log("    \\/  \\/   |_|_| |_|_| |_|\\___|_|");
+      }
     } while (!amIDead && !isComputerDead);
   }
 
@@ -210,11 +283,15 @@ class Battleship {
     var result = new position(letter, number);
 
     if (gameController.computerPositions.indexOf(result.toString()) !== -1) {
-        if (process.env.DEBUG === 'true') {
-            console.log(cliColor.yellowBright(`Computer has guessed position ${result} which has already been guessed. Computer is guessing again...`))
-        }
+      if (process.env.DEBUG === "true") {
+        console.log(
+          cliColor.yellowBright(
+            `Computer has guessed position ${result} which has already been guessed. Computer is guessing again...`
+          )
+        );
+      }
 
-        return this.GetRandomPosition();
+      return this.GetRandomPosition();
     }
 
     return result;
@@ -254,10 +331,10 @@ class Battleship {
             },
           });
 
-            ship.addPosition(validPosition);
+          ship.addPosition(validPosition);
         } else {
-            // redo this iteration;
-            i = i - 1;
+          // redo this iteration;
+          i = i - 1;
         }
       }
     });

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "debug": "DEBUG=true node index.js",
+    "dev": "node index.js",
     "mocha": "mocha ./**/*Tests.js",
     "cucumber": "./node_modules/.bin/cucumber-js ./GameController_ATDD",
     "test": "npm run mocha && npm run cucumber"
